@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@1,700&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+			integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+			crossorigin="anonymous"
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Acme&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap"
+			rel="stylesheet"
+		/>
+		<!-- for bold cursive -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<style>
+			header {
+				text-align: center;
+				font-size: 35px;
+				font-family: "Acme", sans-serif;
+				background-color: #dae1f1;
+				margin-bottom: 10px;
+			}
+			body,
+			html {
+				height: 100%;
+			}
+			body {
+				background-image: url("b2.jpeg");
+				background-attachment: scroll;
+
+				background-position: right;
+				background-repeat: no-repeat;
+				background-size: cover;
+			}
+			.container {
+				display: flow-root;
+			}
+			.container,
+			.demo {
+				font-size: 20px;
+				padding: 30px;
+				margin: auto;
+				text-align: center;
+			}
+			#task2 {
+				text-decoration: line-through;
+			}
+			#add:hover {
+				cursor: pointer;
+			}
+			.changetheme {
+				font-size: 20px;
+			}
+			h3 {
+				/* font-family: "Dancing Script", cursive; */
+				font-family: "Dancing Script", cursive;
+				font-size: 25px;
+				font-weight: bold;
+			}
+
+			ol li {
+				cursor: pointer;
+				position: relative;
+				/* padding: 12px 8px 12px 40px; */
+				list-style-type: disc;
+				background: rgb(214 241 236);
+				font-size: 18px;
+				transition: 0.4s;
+			}
+			li {
+				margin: 10px;
+				font-family: "Karla", sans-serif;
+				box-shadow: 2px 8px 2px 0 rgba(44, 16, 16, 0.2),
+					0 6px 10px 0 rgba(42, 36, 48, 0.19);
+			}
+			.remove {
+				position: absolute;
+				background: rgb(251, 35, 35);
+				right: 0;
+				width: 20px;
+				font-weight: bolder;
+			}
+			#delete {
+				display: none;
+				float: right;
+				font-size: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<header>TO-DO LIST</header>
+		<input
+			class="btn btn-primary"
+			type="submit"
+			onclick="change()"
+			value="Change Theme"
+			style="float: right; margin-right: 20px"
+		/>
+		<div class="container">
+			<h3>Add new tasks</h3>
+			<!-- to input tasks -->
+			<input
+				type="text"
+				alt=""
+				id="inputtext"
+				style="padding: 5px; height: 25px; width: 250px"
+			/>
+			<!-- to add list items -->
+			<i
+				class="fa fa-plus-square"
+				id="add"
+				onclick="additems()"
+				style="font-size: 20px; color: rgb(37, 17, 41)"
+			></i>
+			<!-- list items -->
+			<div class="listitems">
+				<ol id="items"></ol>
+			</div>
+			<!-- <button id="del">del</button> -->
+			<div id="delete">
+				<button onclick="clearAll()">Clear ALl</button>
+			</div>
+		</div>
+	</body>
+
+	<script>
+		let count = 1;
+		let count2 = 0;
+
+		var btnn = document.querySelector("ol");
+		btnn.addEventListener("click", function (e) {
+			let box = document.getElementById("items");
+			let li = e.target.parentNode;
+			box.removeChild(li);
+			count2--;
+			if (count2 == 0) {
+				document.getElementById("delete").style.display = "none";
+			}
+		});
+
+		function change() {
+			if (count == 1) {
+        //url contains photo path
+				document.body.style.backgroundImage = "url('pencil.jpeg')";
+				document.body.style.backgroundRepeat = "no-repeat";
+				count++;
+			} else if (count == 2) {
+				//url contains photo path
+				document.body.style.backgroundImage = "url('b3.jpeg')";
+				document.body.style.backgroundRepeat = "no-repeat";
+				document.body.style.backgroundPosition = "right";
+				count = 0;
+			} else {
+				document.body.style.backgroundImage = "url('b2.jpeg')";
+				document.body.style.backgroundRepeat = "no-repeat";
+				document.body.style.backgroundPosition = "right";
+				count = 1;
+			}
+		}
+		// <i class="fa fa-trash-o" style="font-size: 35px; color: red"></i>
+		function additems() {
+			count = 1;
+			it = document.getElementById("items");
+			it.style.display = "block";
+
+			var clearr = document.getElementById("delete");
+			clearr.style.display = "block";
+
+			var newItem = document.createElement("li");
+			var print = document.getElementById("inputtext").value;
+			var text = document.createTextNode(print);
+			newItem.appendChild(text);
+			document.getElementById("items").appendChild(newItem);
+			count2++;
+
+			const myspan = document.createElement("a");
+			myspan.className = "remove";
+			myspan.href = "javascript:void(0)";
+			myspan.innerHTML = "x";
+			newItem.appendChild(myspan);
+		}
+		function clearAll() {
+			var items = document.getElementById("items");
+			items.innerHTML = "";
+			var clearr = document.getElementById("delete");
+			clearr.style.display = "none";
+		}
+	</script>
+</html>
